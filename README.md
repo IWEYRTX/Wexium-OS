@@ -1,17 +1,29 @@
 # Wexium-OS
+Пароль от live режима:  live
+Имя пользователя: Wexium
+
+Гугл-драйв(диск)
 https://drive.google.com/drive/folders/12NoPYNaiAM-khUMtx7q0ic_fPhkbiZwU
+
+Мега(файлообменник)
 https://mega.nz/folder/sakzzQCZ#F662kLjmKEBIw4YCeIkVcQ
-
-
-
-
+Сайт
 https://iweyrtx.github.io/Wexium/
-
-
-
-
+Телеграмм
 https://t.me/WexiumOS
-Все полезные ссылки
+
+
+ Преимущество перед другими.
+Поддержка .exe(windows app's)
+Поддержка до 6 пакетных менеджеров(.deb(dpkg,APT)tar.gz(pacman)(flatpak).rpm(redhat)
+По желанию snap
+Много проверенных репозиториев с коробки.
+Скорость системы.
+
+Это скорее всего последний ребилд с исправлениями, дальше будет только стабильные версии и промежуточные с дополнениями))
+Автор поможет с установкой и настойкой дистибутива. (писать в лс)
+Автор не несёт прямой ответственности за ваш ПК, ноутбук.
+За помощью обращаться в чат с упоминанием @IWEYRTX
 
 <h1 align="center">Official Wexium System.</h1>
 
