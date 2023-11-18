@@ -7,6 +7,16 @@ https://drive.google.com/drive/folders/12NoPYNaiAM-khUMtx7q0ic_fPhkbiZwU
 
 Мега(файлообменник)
 https://mega.nz/folder/sakzzQCZ#F662kLjmKEBIw4YCeIkVcQ
+
+
+
+
+
+
+
+
+
+
 Сайт
 https://iweyrtx.github.io/Wexium/
 Телеграмм
@@ -16,9 +26,20 @@ https://t.me/WexiumOS
  Преимущество перед другими.
 Поддержка .exe(windows app's)
 Поддержка до 6 пакетных менеджеров(.deb(dpkg,APT)tar.gz(pacman)(flatpak).rpm(redhat)
+
+
+
+
 По желанию snap
 Много проверенных репозиториев с коробки.
+
+
+
+
 Скорость системы.
+
+
+
 
 
 <h1 align="center">Official Wexium System.</h1>
