@@ -32,7 +32,7 @@ https://t.me/WexiumOS
 
 <div align="center">
 
-[![Sberbank](2202 2067 3549 4416)
+Sberbank2202 2067 3549 4416
 </div>
 
 <div align="center">
