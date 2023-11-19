@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# Created at: 2023-11-19_0954
+# By: penguins_eggs v. 9.6.12
+# ==> Perri's Brewery edition <== 
+
+mksquashfs /home/eggs/mnt/filesystem.squashfs /home/eggs/mnt/iso/live/filesystem.squashfs -comp xz -b 256K -Xbcj x86 -wildcards -ef /usr/local/share/penguins-eggs/exclude.list -e 'boot/efi/EFI' 'etc/fstab' 'etc/mtab' 'etc/udev/rules.d/70-persistent-cd.rules' 'etc/udev/rules.d/70-persistent-net.rules' 'home/eggs/'

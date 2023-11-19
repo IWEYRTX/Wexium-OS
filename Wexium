@@ -1,0 +1,2 @@
+# /etc/Wexium
+neofetch --ascii | lolcat -ats 300

@@ -1,0 +1,216 @@
+#!/bin/sh
+
+# Created at: 2023-11-19_0954
+# By: penguins_eggs v. 9.6.12
+# ==> Perri's Brewery edition <== 
+
+# NOTE: cdrom, dev, live, media, mnt, proc, run, sys and tmp
+#       need just a mkdir in /home/eggs/mnt/filesystem.squashfs
+# host: Wexium user: wexium
+
+#############################################################
+# /.snapshots is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/.snapshots -p
+mount --bind --make-slave /.snapshots /home/eggs/mnt/filesystem.squashfs/.snapshots
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/.snapshots
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /FF is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/FF -p
+mount --bind --make-slave /FF /home/eggs/mnt/filesystem.squashfs/FF
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/FF
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /bin is a symbolic link to /usr/bin in the system
+# we need just to recreate it
+# ln -s /home/eggs/mnt/filesystem.squashfs/usr/bin /home/eggs/mnt/filesystem.squashfs/usr/bin
+# but we don't know if the destination exist, and I'm too lazy today. So, for now: 
+# -----------------------------------------------------------
+cp -r /bin /home/eggs/mnt/filesystem.squashfs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /dev is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/dev -p
+# mount -o bind /dev /home/eggs/mnt/filesystem.squashfs/dev
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /etc is a directory need to be presente, and rw
+# -----------------------------------------------------------
+# create mountpoint lower
+# /home/eggs/ovarium/.overlay/lowerdir/etc alreasy exist
+# first: mount /etc rw in /home/eggs/ovarium/.overlay/lowerdir/etc
+mount --bind --make-slave /etc /home/eggs/ovarium/.overlay/lowerdir/etc
+# now remount it ro
+mount -o remount,bind,ro /home/eggs/ovarium/.overlay/lowerdir/etc
+
+# second: create mountpoint upper, work and /home/eggs/mnt/filesystem.squashfs and mount etc
+# /home/eggs/ovarium/.overlay/upperdir/etc alreasy exist
+# /home/eggs/ovarium/.overlay/workdir/etc alreasy exist
+mkdir /home/eggs/mnt/filesystem.squashfs/etc -p
+
+# thirth: mount /etc rw in /home/eggs/mnt/filesystem.squashfs
+mount -t overlay overlay -o lowerdir=/home/eggs/ovarium/.overlay/lowerdir/etc,upperdir=/home/eggs/ovarium/.overlay/upperdir/etc,workdir=/home/eggs/ovarium/.overlay/workdir/etc /home/eggs/mnt/filesystem.squashfs/etc
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /home is a directory need to be present, mount ro
+# -----------------------------------------------------------
+# /home/eggs/mnt/filesystem.squashfs/home alreasy exist
+mount --bind --make-slave /home /home/eggs/mnt/filesystem.squashfs/home
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/home
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /lib is a symbolic link to /usr/lib in the system
+# we need just to recreate it
+# ln -s /home/eggs/mnt/filesystem.squashfs/usr/lib /home/eggs/mnt/filesystem.squashfs/usr/lib
+# but we don't know if the destination exist, and I'm too lazy today. So, for now: 
+# -----------------------------------------------------------
+cp -r /lib /home/eggs/mnt/filesystem.squashfs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /lib64 is a symbolic link to /usr/lib in the system
+# we need just to recreate it
+# ln -s /home/eggs/mnt/filesystem.squashfs/usr/lib /home/eggs/mnt/filesystem.squashfs/usr/lib
+# but we don't know if the destination exist, and I'm too lazy today. So, for now: 
+# -----------------------------------------------------------
+cp -r /lib64 /home/eggs/mnt/filesystem.squashfs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /media is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/media -p
+# mount -o bind /media /home/eggs/mnt/filesystem.squashfs/media
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /mnt is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/mnt -p
+# mount -o bind /mnt /home/eggs/mnt/filesystem.squashfs/mnt
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /opt is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/opt -p
+mount --bind --make-slave /opt /home/eggs/mnt/filesystem.squashfs/opt
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/opt
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /personal is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/personal -p
+mount --bind --make-slave /personal /home/eggs/mnt/filesystem.squashfs/personal
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/personal
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /proc is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/proc -p
+# mount -o bind /proc /home/eggs/mnt/filesystem.squashfs/proc
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /root is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/root -p
+mount --bind --make-slave /root /home/eggs/mnt/filesystem.squashfs/root
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/root
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /run is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/run -p
+# mount -o bind /run /home/eggs/mnt/filesystem.squashfs/run
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /sbin is a symbolic link to /usr/bin in the system
+# we need just to recreate it
+# ln -s /home/eggs/mnt/filesystem.squashfs/usr/bin /home/eggs/mnt/filesystem.squashfs/usr/bin
+# but we don't know if the destination exist, and I'm too lazy today. So, for now: 
+# -----------------------------------------------------------
+cp -r /sbin /home/eggs/mnt/filesystem.squashfs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /srv is a directory need to be present, mount ro
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/srv -p
+mount --bind --make-slave /srv /home/eggs/mnt/filesystem.squashfs/srv
+mount -o remount,bind,ro /home/eggs/mnt/filesystem.squashfs/srv
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /sys is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/sys -p
+# mount -o bind /sys /home/eggs/mnt/filesystem.squashfs/sys
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /tmp is a directory need to be present, no mount
+# -----------------------------------------------------------
+mkdir /home/eggs/mnt/filesystem.squashfs/tmp -p
+# mount -o bind /tmp /home/eggs/mnt/filesystem.squashfs/tmp
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /usr is a directory need to be presente, and rw
+# -----------------------------------------------------------
+# create mountpoint lower
+# /home/eggs/ovarium/.overlay/lowerdir/usr alreasy exist
+# first: mount /usr rw in /home/eggs/ovarium/.overlay/lowerdir/usr
+mount --bind --make-slave /usr /home/eggs/ovarium/.overlay/lowerdir/usr
+# now remount it ro
+mount -o remount,bind,ro /home/eggs/ovarium/.overlay/lowerdir/usr
+
+# second: create mountpoint upper, work and /home/eggs/mnt/filesystem.squashfs and mount usr
+# /home/eggs/ovarium/.overlay/upperdir/usr alreasy exist
+# /home/eggs/ovarium/.overlay/workdir/usr alreasy exist
+mkdir /home/eggs/mnt/filesystem.squashfs/usr -p
+
+# thirth: mount /usr rw in /home/eggs/mnt/filesystem.squashfs
+mount -t overlay overlay -o lowerdir=/home/eggs/ovarium/.overlay/lowerdir/usr,upperdir=/home/eggs/ovarium/.overlay/upperdir/usr,workdir=/home/eggs/ovarium/.overlay/workdir/usr /home/eggs/mnt/filesystem.squashfs/usr
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /var is a directory need to be presente, and rw
+# -----------------------------------------------------------
+# create mountpoint lower
+# /home/eggs/ovarium/.overlay/lowerdir/var alreasy exist
+# first: mount /var rw in /home/eggs/ovarium/.overlay/lowerdir/var
+mount --bind --make-slave /var /home/eggs/ovarium/.overlay/lowerdir/var
+# now remount it ro
+mount -o remount,bind,ro /home/eggs/ovarium/.overlay/lowerdir/var
+
+# second: create mountpoint upper, work and /home/eggs/mnt/filesystem.squashfs and mount var
+# /home/eggs/ovarium/.overlay/upperdir/var alreasy exist
+# /home/eggs/ovarium/.overlay/workdir/var alreasy exist
+mkdir /home/eggs/mnt/filesystem.squashfs/var -p
+
+# thirth: mount /var rw in /home/eggs/mnt/filesystem.squashfs
+mount -t overlay overlay -o lowerdir=/home/eggs/ovarium/.overlay/lowerdir/var,upperdir=/home/eggs/ovarium/.overlay/upperdir/var,workdir=/home/eggs/ovarium/.overlay/workdir/var /home/eggs/mnt/filesystem.squashfs/var
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#############################################################
+# /version is just a file
+# -----------------------------------------------------------
+cp /version /home/eggs/mnt/filesystem.squashfs
+# ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

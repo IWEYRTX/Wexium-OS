@@ -1,0 +1,177 @@
+#!/bin/sh
+
+# Created at: 2023-11-19_1023
+# By: penguins_eggs v. 9.6.12
+# ==> Perri's Brewery edition <== 
+
+# NOTE: home, cdrom, dev, live, media, mnt, proc, run, sys and tmp
+#       need just to be removed in /home/eggs/mnt/filesystem.squashfs
+# host: Wexium user: wexium
+
+#############################################################
+
+# directory: .snapshots
+umount /home/eggs/mnt/filesystem.squashfs/.snapshots
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/.snapshots -rf
+#############################################################
+
+# directory: FF
+umount /home/eggs/mnt/filesystem.squashfs/FF
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/FF -rf
+#############################################################
+
+# bin = symbolicLink
+rm /home/eggs/mnt/filesystem.squashfs/bin
+#############################################################
+
+# directory: boot
+
+# boot has overlay
+
+# First, umount it from /home/eggs/
+umount /home/eggs/mnt/filesystem.squashfs/boot
+
+# Second, umount it from /home/eggs/ovarium/.overlay/lowerdir
+umount /home/eggs/ovarium/.overlay/lowerdir/boot
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/boot -rf
+#############################################################
+
+# directory: dev
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/dev -rf
+#############################################################
+
+# directory: etc
+
+# etc has overlay
+
+# First, umount it from /home/eggs/
+umount /home/eggs/mnt/filesystem.squashfs/etc
+
+# Second, umount it from /home/eggs/ovarium/.overlay/lowerdir
+umount /home/eggs/ovarium/.overlay/lowerdir/etc
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/etc -rf
+#############################################################
+
+# directory: home
+umount /home/eggs/mnt/filesystem.squashfs/home
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+#############################################################
+
+# lib = symbolicLink
+rm /home/eggs/mnt/filesystem.squashfs/lib
+#############################################################
+
+# lib64 = symbolicLink
+rm /home/eggs/mnt/filesystem.squashfs/lib64
+#############################################################
+
+# directory: media
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/media -rf
+#############################################################
+
+# directory: mnt
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/mnt -rf
+#############################################################
+
+# directory: opt
+umount /home/eggs/mnt/filesystem.squashfs/opt
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/opt -rf
+#############################################################
+
+# directory: personal
+umount /home/eggs/mnt/filesystem.squashfs/personal
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/personal -rf
+#############################################################
+
+# directory: proc
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/proc -rf
+#############################################################
+
+# directory: root
+umount /home/eggs/mnt/filesystem.squashfs/root
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/root -rf
+#############################################################
+
+# directory: run
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/run -rf
+#############################################################
+
+# sbin = symbolicLink
+rm /home/eggs/mnt/filesystem.squashfs/sbin
+#############################################################
+
+# directory: srv
+umount /home/eggs/mnt/filesystem.squashfs/srv
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/srv -rf
+#############################################################
+
+# directory: sys
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/sys -rf
+#############################################################
+
+# directory: tmp
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/tmp -rf
+#############################################################
+
+# directory: usr
+
+# usr has overlay
+
+# First, umount it from /home/eggs/
+umount /home/eggs/mnt/filesystem.squashfs/usr
+
+# Second, umount it from /home/eggs/ovarium/.overlay/lowerdir
+umount /home/eggs/ovarium/.overlay/lowerdir/usr
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/usr -rf
+#############################################################
+
+# directory: var
+
+# var has overlay
+
+# First, umount it from /home/eggs/
+umount /home/eggs/mnt/filesystem.squashfs/var
+
+# Second, umount it from /home/eggs/ovarium/.overlay/lowerdir
+umount /home/eggs/ovarium/.overlay/lowerdir/var
+
+# remove in /home/eggs/mnt/filesystem.squashfs and /home/eggs/ovarium/.overlay/lowerdir
+rm /home/eggs/mnt/filesystem.squashfs/var -rf
+#############################################################
+
+# version = file
+rm /home/eggs/mnt/filesystem.squashfs/version
+umount /home/eggs/mnt/filesystem.squashfs/home
