@@ -16,7 +16,7 @@ https://drive.google.com/drive/folders/12NoPYNaiAM-khUMtx7q0ic_fPhkbiZwU
 
 
 Сайт
-wexium.vercel.app
+https://wexium.vercel.app
 Телеграмм
 https://t.me/WexiumOS
 
