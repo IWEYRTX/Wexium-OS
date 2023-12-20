@@ -2,8 +2,6 @@
 Пароль от live режима:  live
 Имя пользователя: Wexium
 
-Гугл-драйв(диск)
-https://drive.google.com/drive/folders/12NoPYNaiAM-khUMtx7q0ic_fPhkbiZwU
 
 
 
